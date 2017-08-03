@@ -6,12 +6,26 @@ $(function(){
 	var aside = $("aside");
 	var navbarBrand = $(".navbar-brand");
 	var wrapScrollTop;
+	var hash = window.location.hash;
 
-	$("aside").load("../aside.html");//加载公共侧边栏
-	$("header").load("../header.html");//加载公共头部
+	$("#content").load("dashboard/dashboard.html");//默认加载
+
+	/*页面刷新时，判断锚点，用a标签锚点实现路由效果（页面刷新时不会一直跳转到首页）*/
+	if(hash === "#dashboard"){
+		$("#content").load("dashboard/dashboard.html");
+	}
+	if(hash === "#lecturer"){
+		$("#content").load("lecturer/lecturerManagement.html");
+	}
+	if(hash === "#sort"){
+		$("#content").load("sort/sortManagement.html");
+	}
+	if(hash === "#courseAdd"){
+		$("#content").load("courseManagement/courseAdd.html");
+	}
+
 
 	lis.on("click",function(event){//侧边栏 切换样式
-		console.log($(this).index());
 		$(this).children("a").addClass("current").end().siblings("li").children("a").removeClass("current");
 		event.stopPropagation();
 		if(!course.children("a").hasClass("current")){//当父元素失去样式时，子元素去掉样式
