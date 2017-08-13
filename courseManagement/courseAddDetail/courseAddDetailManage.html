@@ -1,0 +1,238 @@
+<div class="panel-heading" style = "height:50px;padding:10px 20px;">
+    <h3 class="panel-title pull-left" style = "line-height:30px;">课时管理
+    	<small>LESSON MANAGE</small>
+    </h3>
+    <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal2" >
+      <span class = "fa fa-plus"></span>&nbsp;&nbsp;课时
+    </button>
+</div>
+<div class="panel-body" >
+    <div class="lessons">
+        <ul class="list-unstyled">       
+            <!-- <li>
+                          <i class="fa fa-file-video-o"></i>
+                          <span class="order">课时：1</span>
+                          <span class="name">介绍</span>
+                          <span class="duration">08:12</span>
+                          操作
+                          <div class="action pull-right" data-id="1">
+                              <a href="javascript:;" class="btn btn-info btn-xs edit">编辑</a>
+                              <a href="javascript:;" class="btn btn-info btn-xs preview">预览</a>
+                              <a href="javascript:;" class="btn btn-danger btn-xs delete">删除</a>
+                          </div>
+                      </li>   -->          
+        </ul>
+    </div>
+</div>
+<!-- Modal模态框 编辑 -->
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style = "width:700px;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style = "line-height:25px;">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">添加课时</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal container-fulid editform">
+                <div class="form-group">
+                    <label for="info-title" class="col-sm-2 control-label">标题</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control"  id = "info-title" name = "ct_name">
+                        <input type="checkbox"  name="ct_is_free" value = "1" checked >免费课时
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Introduction" class="col-sm-2 control-label">简介</label>
+                    <div class = "col-sm-9">
+                        <textarea  name = "ct_brief" style = "width:100%;height:100px;resize:none;padding:10px;" id = "Introduction"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="info-label" class="col-sm-2 control-label">视频</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="info-video" name = "ct_video" placeholder = "支持优酷、土豆、腾讯、网易公开课的视频页面地址导入" style = "position:relative;">
+                        <button class = "btn btn-info" style = "position:absolute;top:0;right:13px;">获取</button>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label for="info-title" class="col-sm-2 control-label">时长</label>
+                    <div class="col-sm-5" >
+                        <input type="text" class="form-control"  id = "info-min" name = "ct_minutes" style = "width:80px;">&nbsp;分
+                        <input type="text" class="form-control"  id = "info-sec" name = "ct_seconds" style = "width:80px;">&nbsp;秒
+                        <p style = "color:#999;margin-top:5px;">时长必须为整数</p>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label for="info-title" class="col-sm-2 control-label">建议学习时长</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control"  id = "info-time" name = "ct_recommend_duration" style = "width:80px;">&nbsp;小时
+                    </div>
+                </div>
+                <!-- <div class="form-group" style = "margin-top:20px;">
+                    <div class="col-sm-offset-2 col-sm-9">
+                        <button type="submit" class="btn btn-default btn-info pull-right save">保存</button>
+                    </div>
+                </div> -->
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary " id = "editCourse">更改</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal模态框 新添加课时 -->
+<div class="modal fade bs-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style = "width:700px;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style = "line-height:25px;">
+            	<span aria-hidden="true" >&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">添加课时</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal container-fulid addform">
+        		<div class="form-group">
+        			<label for="info-title" class="col-sm-2 control-label">标题</label>
+        			<div class="col-sm-9">
+        				<input type="text" class="form-control"  id = "info-title" name = "ct_name">
+        				<input type="checkbox"  name="ct_is_free" value = "1" checked >免费课时
+        			</div>
+        		</div>
+        		<div class="form-group">
+        			<label for="Introduction" class="col-sm-2 control-label">简介</label>
+        			<div class = "col-sm-9">
+        				<textarea  name = "ct_brief" style = "width:100%;height:100px;resize:none;padding:10px;" id = "Introduction"></textarea>
+        			</div>
+        		</div>
+        		
+        		<div class="form-group">
+        			<label for="info-label" class="col-sm-2 control-label">视频</label>
+        			<div class="col-sm-9">
+        				<input type="text" class="form-control" id="info-video" name = "ct_video" placeholder = "支持优酷、土豆、腾讯、网易公开课的视频页面地址导入" style = "position:relative;">
+        				<button class = "btn btn-info" style = "position:absolute;top:0;right:13px;">获取</button>
+        			</div>
+        		</div>
+        		<div class="form-group form-inline">
+        			<label for="info-title" class="col-sm-2 control-label">时长</label>
+        			<div class="col-sm-5" >
+        				<input type="text" class="form-control"  id = "info-min" name = "ct_minutes" style = "width:80px;">&nbsp;分
+        				<input type="text" class="form-control"  id = "info-sec" name = "ct_seconds" style = "width:80px;">&nbsp;秒
+        				<p style = "color:#999;margin-top:5px;">时长必须为整数</p>
+        			</div>
+        		</div>
+        		<div class="form-group form-inline">
+        			<label for="info-title" class="col-sm-2 control-label">建议学习时长</label>
+        			<div class="col-sm-9">
+        				<input type="text" class="form-control"  id = "info-time" name = "ct_recommend_duration" style = "width:80px;">&nbsp;小时
+        			</div>
+        		</div>
+        		<!-- <div class="form-group" style = "margin-top:20px;">
+                    <div class="col-sm-offset-2 col-sm-9">
+                        <button type="submit" class="btn btn-default btn-info pull-right save">保存</button>
+                    </div>
+                </div> -->
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary " id = "addCourse">添加</button>
+        </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        var info_title = $("#info-title");
+        var Introduction = $("#Introduction");
+        var info_video = $("#info-video");
+        var info_min = $("#info-min");
+        var info_sec = $("#info-sec");
+        var info_time = $("#info-time");
+        var editCourse = $("#editCourse");
+        var addCourse = $("#addCourse");
+        var cs_id = $.session.get("cs_id");
+        var arr = [];
+        var ct_id,param1,param2;
+        $.ajax({
+            type:"post",
+            data:{cookie:cookie,cs_id:cs_id},
+            url:"./phpData/courseAddClass.php",
+            dataType:"json",
+            success:function(data){
+                data = data.result.lessons;
+                for(i = 0,len=data.length;i<len;i++){
+                    arr.push(
+                        '<li>'+
+                            '<i class="fa fa-file-video-o"></i>'+
+                            '<span class="order">课时'+(i+1)+'：</span>'+
+                            '<span class="name">'+data[i].ct_name+'</span>'+
+                            '<span class="duration">'+data[i].ct_video_duration+'</span>'+
+                            ''+
+                            '<div class="action pull-right" data-id="1">'+
+                                '<a href="javascript:;" class="btn btn-info btn-xs edit" data-toggle="modal" data-target="#myModal" data-ct_id = "'+data[i].ct_id+'">编辑</a>'+
+                                '<a href="javascript:;" class="btn btn-info btn-xs preview">预览</a>'+
+                                '<a href="javascript:;" class="btn btn-danger btn-xs delete">删除</a>'+
+                            '</div>'+
+                        '</li>'
+                    );
+                }
+                $(".list-unstyled").append(arr.join(""));
+                
+                var edit = $(".edit");   
+                edit.on("click",function(){
+                    ct_id = $(this).data("ct_id");
+                    $.ajax({
+                        type:"post",
+                        data:{cookie:cookie,ct_id:ct_id},
+                        url:"./phpData/courseAddEdit.php",
+                        dataType:"json",
+                        success:function(data){
+                            info_title.val(data.result.ct_name);
+                            Introduction.html(data.result.ct_brief);
+                            info_video.val(data.result.ct_video);
+                            info_min.val(data.result.ct_minutes);
+                            info_sec.val(data.result.ct_seconds);
+                            info_time.val(data.result.ct_recommend_duration);
+                        }
+                    });
+                });
+            }
+        });
+        editCourse.on("click",function(){
+            param1 = "ct_id="+ct_id + "&"+$(".editform").serialize();
+            $.ajax({
+                type:"post",
+                data:{cookie:cookie,param:param1},
+                url:"./phpData/courseAddSave.php",
+                dataType:"json",
+                success:function(data){
+                    if(data.code == 200){
+                        alert("课时修改成功");
+                    }
+                }
+            });
+        });
+        addCourse.on("click",function(){
+            param2 = "ct_cs_id="+ cs_id + "&"+$(".addform").serialize();
+            $.ajax({
+                type:"post",
+                data:{cookie:cookie,param:param2},
+                url:"./phpData/courseAddNew.php",
+                dataType:"json",
+                success:function(data){
+                    if(data.code == 200){
+                        alert("添加课时成功");
+                    }
+                }
+            });
+        });
+    });
+</script>

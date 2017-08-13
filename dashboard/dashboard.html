@@ -29,4 +29,37 @@
 			</div>
 		</div>
 	</div>
+	<div class = "row" style = "background: #fff;margin-top:35px;">
+		<div class = "echarts col-sm-6 col-sm-offset-1" style = "height:400px;margin-top:20px;" id = "echarts">
+			
+		</div>
+	</div>
 </div>
+<script type="text/javascript" src = "./lib/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript">
+	// 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echarts'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '课程数量'
+        },
+        tooltip: {},
+        legend: {
+            data:['数量']
+        },
+        xAxis: {
+            data: ["HTML","CSS","Mobile","Angular","vue","Node.js"]
+        },
+        yAxis: {},
+        series: [{
+            name: '数量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 25, 20]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>

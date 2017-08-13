@@ -1,0 +1,85 @@
+<div class= "sortAdd">
+	<ol class="breadcrumb">
+		<li><a href="#">课程管理</a></li>
+		<li class="active">添加分类</li>
+	</ol>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class = "container-fulid">
+				<form class="form-horizontal col-sm-offset-3">
+					<div class="form-group">
+						<label for="userName" class="col-sm-2 control-label">名称</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="userName" placeholder="填写分类名称" name = "cg_name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="leixing" class="col-sm-2 control-label">级别</label>
+						<select class="form-control col-sm-3" id = "leixing" style = "width:20%;margin-left:15px" name = "cg_pid">
+							<option value = "0">顶级分类</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="paixu" class="col-sm-2 control-label">排序</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="paixu" value="10" name = "cg_order">
+						</div>
+					</div>
+					<div class = "form-group">
+						<label for="sex" class="col-sm-2 control-label" style = "margin-right:15px;">是否显示</label>
+						<div class = "radio" id = "sex" >
+							<label>
+							    <input type="radio" name="cg_is_hide" id="optionsRadios1" value="0" checked>
+							    是
+							</label>
+							<label>
+							    <input type="radio" name="cg_is_hide" id="optionsRadios2" value="1">
+							    否
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default btn-info save">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var arr = [];
+		var i,len;
+		var save = $(".save");
+		$.ajax({
+			type:"post",
+			data:{cookie:cookie},
+			url:"./phpData/sortToplevel.php",
+			success:function(data){
+				data = JSON.parse(data);
+				for(i=0,len = data.result.length;i<len;i++){
+					arr.push(
+						'<option value = "'+data.result[i].cg_id+'">'+data.result[i].cg_name+'</option>'
+					);
+				}
+				$("#leixing").append(arr.join(""));
+			}
+		});
+		save.on("click",function(){
+			$.ajax({
+				type:"post",
+				data:{cookie:cookie,param:$("form").serialize()},
+				url:"./phpData/sortAdd.php",
+				success:function(data){
+					data = JSON.parse(data);
+					if(data.code == 200){
+						alert("添加成功！");
+					}
+				}
+			});
+			return false;
+		});
+	});
+</script>

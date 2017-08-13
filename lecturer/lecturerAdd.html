@@ -1,0 +1,87 @@
+<div class= "lecturerAdd" style = "margin:15px;">
+	<ol class="breadcrumb" style = "border:1px solid #ccc;background:#fff;">
+		<li><a href="#">讲师管理</a></li>
+		<li class="active">讲师添加</li>
+	</ol>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class = "container-fulid">
+				<form class="form-horizontal col-sm-offset-3">
+					<div class="form-group">
+						<label for="userName" class="col-sm-2 control-label">用户名</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="userName" placeholder="请输入用户名" name = "tc_name"><!-- 表单中的 name为向后台传值是的键 -->
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-5">
+							<input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码" name = "tc_pass">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="entryTime" class="col-sm-2 control-label">入职时间</label>
+						<div class="col-sm-5">
+							<!-- 日历插件 -->
+							<input type="text" class="form-control" id="entryTime" placeholder="" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-provide="datepicker" data-date-end-date = "0d" data-date-orientation="top" name = "tc_join_date">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="leixing" class="col-sm-2 control-label">类型</label>
+
+						<select class="form-control col-sm-3" id = "leixing" name = "tc_type" style = "width:20%;margin-left:15px">
+							<option value = "1">讲师</option>
+							<option value = "0">管理员</option>
+						</select>
+					</div>
+					<div class = "form-group">
+						<label for="sex" class="col-sm-2 control-label" style = "margin-right:15px;">性别</label>
+						<div class = "radio" id = "sex" >
+							<label>
+							    <input type="radio" name="tc_gender" id="optionsRadios1" value="0" checked>
+							    男
+							</label>
+							<label>
+							    <input type="radio" name="tc_gender" id="optionsRadios2" value="1">
+							    女
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default btn-info">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 日历插件需调用文件 -->
+<script type="text/javascript">
+	$("head").append('<link rel="stylesheet" type="text/css" href="lib/datepicker/css/bootstrap-datepicker.min.css">');//需调用的css文件
+</script>
+<script type="text/javascript" src = "lib/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src = "lib/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// var cookie = "PHPSESSID="+$.cookie("PHPSESSID");
+		$(".btn").on("click",function(){
+			$.ajax({
+				type:"post",
+				data:{param:$("form").serialize(),cookie:cookie},
+				url:"./phpData/lecturerAdd.php",
+				success:function(data){
+					data = JSON.parse(data);
+					if(data.code == 200){
+						alert("讲师添加成功");
+					}else{
+						alert("添加失败");
+					}
+				}
+			});
+			return false;
+		});
+	});
+</script>

@@ -1,0 +1,44 @@
+<div class="panel-heading">
+    <h3 class="panel-title">课程图片
+    	<small>COURSE PICTURE</small>
+    </h3>
+</div>
+<div class="panel-body">
+    <div class = "col-sm-6 col-sm-offset-2">
+       	<div id="uploader-demo">
+    	    <!-- 用来存放item -->
+    	    <div id="fileList" class="uploader-list" >
+    			<img src="./images/course.png" style = "width:100%" id = "userAvatar">
+    	    </div>
+    		<p style = "margin:15px 0">可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。</p>
+    	    <div id="filePicker" style="margin-right:30px;float:left">上传图片</div>
+    		<button class= "btn btn-warning" style = "width: 86px;height: 40px;">裁切图片</button>
+    	</div>
+    </div>
+</div>
+<script type="text/javascript">
+	$("head").append('<link rel="stylesheet" type="text/css" href="lib/webuploader/webuploader.css">');//需调用的css文件
+</script>
+<script type="text/javascript" src = "lib/webuploader/webuploader.js"></script><!-- 图片上传 -->
+<script type="text/javascript">
+	// 图片上传初始化
+	var uploader = WebUploader.create({
+	    // 选完文件后，是否自动上传。
+	    auto: true,
+	    // swf文件路径
+	    swf: 'lib/webuploader/Uploader.swf',
+	    // 文件接收服务端。
+	    server: './phpData/userAvatar.php',
+	    // 选择文件的按钮。可选。
+	    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	    pick: '#filePicker',
+	    // 只允许选择图片文件。
+	    accept: {
+	        title: 'Images',
+	        extensions: 'gif,jpg,jpeg,bmp,png',
+	        mimeTypes: 'image/*'
+	    },
+	    formData: { "cookie": cookie},
+	    fileVal:"pic"
+	});
+</script>

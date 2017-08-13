@@ -10,12 +10,58 @@
 					<small>CREATE A COURSE</small>
 				</h5>
 			</div>
-			<div class = "container-fuild">
-				
+			<div class = "container-fulid">
+				<div class = "row">
+					<form class="form-horizontal col-sm-6">
+						<div class="form-group">
+							<label for="courseName" class="col-sm-2 control-label">课程标题</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" placeholder="请填写课程标题" id="courseName">
+							</div>
+							<a href = "javascript:;" class = "btn btn-info btn-sm col-sm-2 createCourse" style = "height:34px;line-height:24px;">创建课程</a>
+						</div>
+					</form>
+					<div class = "col-sm-1">
+						<div class = "line center-block"></div>
+					</div>
+					<div class = "col-sm-5">
+						<div class="page-header">
+							<h4>从视频专辑导入课程 <br />
+								<small>已支持优酷、腾讯视频、网易公开课、爱奇艺教育的视频专辑导入。</small>
+							</h4>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<!-- <div class="panel-body">
-			
-		</div> -->
 	</div>
 </div>
+<script type="text/javascript" src = "./lib/jqueryCookie/jquery.session.js"></script>
+<script type="text/javascript">
+	var cs_name;
+	$(".createCourse").on("click",function(){
+		// $("#content").load("courseManagement/courseAddDetail/courseAddDetail.html");
+		cs_name = $("#courseName").val();
+		if(cs_name){ //如果填写了课程名，存储课程名，详情页用
+			$.ajax({
+				type:"post",
+				data:{cookie:cookie,cs_name:cs_name},
+				url:"./phpData/createCourse.php",
+				success:function(data){
+					data = JSON.parse(data);
+					console.log(data);
+					if(data.code == 200){
+						alert("创建课程成功");
+						$.session.set("cs_id",data.result.cs_id);
+						console.log($.session.get("cs_id"));
+						window.location.hash = "#courseAdd/Detail/info";//创建成功后才跳转页面，否则提前赋予url后，创建未完成，刷新也会跳转页面
+						$("#content").load("courseManagement/courseAddDetail/courseAddDetail.html",function(){
+							$(".panel-right").load("courseManagement/courseAddDetail/courseAddDetailInfo.html");
+						});
+					}
+				}
+			});
+			
+		}else(alert("请先输入课程标题"));
+	});
+</script>

@@ -1,0 +1,84 @@
+
+<div class= "lecturerManagement">
+	<ol class="breadcrumb">
+		<li><a href="#">讲师管理</a></li>
+		<li class="active">讲师编辑</li>
+	</ol>
+	<div class = "container-fulid" style = "background:#fff;border:1px solid #ccc;padding:30px 0;">
+		<form class="form-horizontal col-sm-offset-3">
+			<div class="form-group">
+				<label for="userName" class="col-sm-2 control-label">用户名</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="userName"name = "tc_name"><!-- 表单中的 name为向后台传值是的键 -->
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="entryTime" class="col-sm-2 control-label">入职时间</label>
+				<div class="col-sm-5">
+					<!-- 日历插件 -->
+					<input type="text" class="form-control" id="entryTime" placeholder="" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-provide="datepicker" data-date-end-date = "0d" data-date-orientation="top" name = "tc_join_date" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="leixing" class="col-sm-2 control-label">类型</label>
+				<select class="form-control col-sm-3" id = "leixing" name = "tc_type" style = "width:20%;margin-left:15px">
+					<option value = "1">讲师</option>
+					<option value = "0">管理员</option>
+				</select>
+			</div>
+			<div class = "form-group">
+				<label for="sex" class="col-sm-2 control-label" style = "margin-right:15px;">性别</label>
+				<div class = "radio" id = "sex" >
+					<label>
+					    <input type="radio" name="tc_gender" id="man" value="0">
+					    男
+					</label>
+					<label>
+					    <input type="radio" name="tc_gender" id="woman" value="1">
+					    女
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default btn-info save">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- 日历插件 -->
+<script type="text/javascript">
+	$("head").append('<link rel="stylesheet" type="text/css" href="lib/datepicker/css/bootstrap-datepicker.min.css">');//需调用的css文件
+</script>
+<script type="text/javascript" src = "lib/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src = "lib/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src = "./lib/jqueryCookie/jquery.session.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var tc_id = $.session.get("tc_id");
+		// var cookie = "PHPSESSID="+$.cookie("PHPSESSID");
+		var save = $(".save");
+		$.ajax({
+			type:"post",
+			url:"./phpData/lecturerEdit.php",
+			data:{tc_id:tc_id,cookie:cookie},
+			success:function(data){
+				data = JSON.parse(data);
+				$("#userName").val(data.result.tc_name);
+				$("#entryTime").val(data.result.tc_join_date);
+				if(data.result.tc_type == 1){
+					$("#leixing").children("option").first().prop("selected");
+				}else{
+					$("#leixing").children("option").last().prop("selected");
+				}
+				if(data.result.tc_gender == 1){
+					$("#woman").prop("checked","true");
+				}else{
+					$("#man").prop("checked","true");
+				}
+				//保存更改(api 接口有问题，不是保存修改的数据，会直接删除数据)
+			}
+		});
+	});
+</script>

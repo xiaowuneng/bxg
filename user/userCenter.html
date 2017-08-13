@@ -1,0 +1,223 @@
+<div class="userCenter">
+	<div class = "container-fulid">
+		<form class="form-horizontal col-sm-offset-2">
+			<div class="form-group">
+				<label for="userName" class="col-sm-2 control-label">姓名</label>
+				<div class="col-sm-5" style = "padding-top:7px;">
+					<span id = "userName" class = "form-control-static"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="userAvatar" class="col-sm-2 control-label">头像</label>
+				<div class="col-sm-5 wu-example" id="uploader" style = "padding-top:7px;overflow:hidden;"><!-- 图片上传 -->
+					<!-- <div id="thelist" class="uploader-list" style = "width:120px;height:120px;position:relative;">
+						<img src="" style = "width:100%" id = "userAvatar">
+					</div>
+				    <div class="btns" style = "width:120px;height:120px;text-align:center;padding-top:40px;background:rgba(0,0,0,0.3);position:absolute;top:7px;left:14px;z-index = 999;display:block;">
+				        <div id="picker">
+				        	<span class = "glyphicon glyphicon-open" sthle = "display:block;width:120px;height:120px;"></span>
+				        </div>
+					</div> -->
+					<div id="uploader-demo">
+					    <!-- 用来存放item -->
+					    <div id="fileList" class="uploader-list" style = "width:120px;height:120px;">
+					    	<img src="" style = "width:100%" id = "userAvatar">
+					    </div>
+					    <div id="filePicker">选择图片</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="userRoster" class="col-sm-2 control-label">昵称</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control"  id = "userRoster" name = "tc_roster">
+				</div>
+			</div>
+			<div class = "form-group">
+				<label for="sex" class="col-sm-2 control-label" style = "margin-right:15px;">性别</label>
+				<div class = "radio" id = "sex" >
+					<label>
+					    <input type="radio" name="tc_gender" id="man" value="0">
+					    男
+					</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>
+					    <input type="radio" name="tc_gender" id="woman" value="1">
+					    女
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="birthday" class="col-sm-2 control-label">出生日期</label>
+				<div class="col-sm-7">
+					<!-- 日历插件 -->
+					<input type="text" class="form-control" id="birthday" name = "tc_birthday" placeholder="" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-provide="datepicker" data-date-end-date = "0d" data-date-orientation="top">
+				</div>
+			</div>
+			<div class="form-group" data-toggle="distpicker" id = "distpicker">
+				<label for="jiguan" class="col-sm-2 control-label">籍贯</label>
+				<div class = "col-sm-7">
+					<select class="form-control pull-left"  style = "width:32%;" id = "province" name = "tc_province" >
+						<option></option>
+					</select>
+					<select class="form-control pull-left"  style = "width:32%;margin-left:2%; " id= "city" name = "tc_city">
+						<option></option>
+					</select>
+					<select class="form-control pull-left"  style = "width:32%;margin-left:2%; " id = "district" name = "tc_district">
+						<option></option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phoneNumber" class="col-sm-2 control-label">手机号码</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="phoneNumber" name = "tc_cellphone">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">电子邮箱</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="email" name = "tc_email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="entryTime" class="col-sm-2 control-label">入职日期</label>
+				<div class="col-sm-7">
+					<!-- 日历插件 -->
+					<input type="text" class="form-control" id="entryTime" name = "tc_join_date" placeholder="" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-provide="datepicker" data-date-end-date = "0d" data-date-orientation="top">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="userIntroduce" class="col-sm-2 control-label">个人介绍</label>
+				<!-- 富文本编辑器 -->
+				<div class = "col-sm-7">
+					<textarea id = "editor" name = "tc_introduce"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-7">
+					<button type="submit" class="btn btn-default btn-info pull-right save">保存</button>
+					<a href="#changePassword" style = "float:right;padding:6px 12px;">更改密码？</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 日历插件需调用css文件,图片上传(webuploader)css文件 -->
+<script type="text/javascript">
+	$("head").append('<link rel="stylesheet" type="text/css" href="lib/datepicker/css/bootstrap-datepicker.min.css">')
+			 .append('<link rel="stylesheet" type="text/css" href="lib/webuploader/webuploader.css">');//需调用的css文件
+	
+</script>
+<script type="text/javascript" src = "lib/webuploader/webuploader.js"></script><!-- 图片上传 -->
+<script type="text/javascript" src = "lib/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src = "lib/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script><!-- 日历插件 -->
+<script type="text/javascript" src="lib/distpicker/distpicker.min.js"></script><!-- 省市三级联动插件 -->
+<script type="text/javascript" src="lib/ckeditor/ckeditor.js"></script><!-- 富文本编辑插件 -->
+<script type="text/javascript">
+	//省市联动初始化，不要放在$(function(){})中
+	$("#distpicker").distpicker({
+		province: '----请选择省----',
+		city: '----请选择市----',
+		district: '----请选择区/县----'
+	});
+
+	// 图片上传初始化
+	var uploader = WebUploader.create({
+	    // 选完文件后，是否自动上传。
+	    auto: true,
+	    // swf文件路径
+	    swf: 'lib/webuploader/Uploader.swf',
+	    // 文件接收服务端。
+	    server: './phpData/userAvatar.php',
+	    // 选择文件的按钮。可选。
+	    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	    pick: '#filePicker',
+	    // 只允许选择图片文件。
+	    accept: {
+	        title: 'Images',
+	        extensions: 'gif,jpg,jpeg,bmp,png',
+	        mimeTypes: 'image/*'
+	    },
+	    formData: { "cookie": cookie},
+	    fileVal:"pic"
+	});
+	$(function(){
+		var userName = $("#userName");
+		var userAvatar = $("#userAvatar");
+		var thelist = $("#thelist");
+		var btns = $(".btns");
+		var glyphicon_open = $(".glyphicon-open");
+		var userRoster = $("#userRoster");
+		var man = $("#man");
+		var woman = $("#woman");
+		var birthday = $("#birthday");
+		var province = $("#province");
+		var city = $("#city");
+		var district = $("#district");
+		var phoneNumber = $("#phoneNumber");
+		var email = $("#email");
+		var entryTime = $("#entryTime");
+		var editor = $("#editor");
+		var save = $(".save");
+		var arr = [];
+		var tc_id,param,tc_gender;//保存更改时要用的参数
+		CKEDITOR.replace("editor");//编辑器初始化
+		$.ajax({
+			type:"post",
+			data:{cookie:cookie},
+			url:"./phpData/userCenter.php",
+			success:function(data){
+				data = JSON.parse(data);
+				userName.html(data.result.tc_name);
+				userAvatar.attr("src",data.result.tc_avatar);
+				userRoster.attr("value",data.result.tc_roster);
+				if(data.result.tc_gender == 0){
+					man.prop("checked","true");
+				}else{
+					woman.prop("checked","true");
+				}
+				birthday.attr("placeholder",data.result.tc_birthday);
+				// 省市县三级联动(还没做);
+
+				phoneNumber.attr("placeholder",data.result.tc_cellphone);
+				email.attr("value",data.result.tc_email);
+				entryTime.attr("placeholder",data.result.tc_join_date);
+				CKEDITOR.instances.editor.setData(data.result.tc_introduce);//编辑器赋初值
+				tc_id = data.result.tc_id;
+			}
+		});
+		save.on("click",function(){
+			//表单参数整理
+			tc_gender = $("input[name='tc_gender']:checked").val();//获取性别
+			param = 
+				"tc_id="+tc_id+
+				"&tc_roster="+userRoster.val()+
+				"&tc_gender="+tc_gender+
+				"&tc_birthday="+birthday.val()+
+				"&tc_province="+$("#province option:selected").data("code")+
+				"&tc_city="+$("#city option:selected").data("code")+
+				"&tc_district="+$("#district option:selected").data("code")+
+				"&tc_hometown="+$("#province option:selected").data("text")+"|"+$("#city option:selected").data("text")+"|"+$("#district option:selected").data("text")+
+				"&tc_cellphone="+phoneNumber.val()+
+				"&tc_email="+email.val()+
+				"&tc_join_date="+entryTime.val()+
+				"&tc_introduce="+editor.val();
+			console.log(param);
+			$.ajax({
+				type:"post",
+				data:{cookie:cookie,param:param},
+				url:"./phpData/userCenterSave.php",
+				success:function(data){
+					data = JSON.parse(data);
+					if(data.code == 200){
+						alert("修改成功");
+						window.location.reload();
+					}
+				}
+			});
+			return false;
+		});
+	});
+</script>

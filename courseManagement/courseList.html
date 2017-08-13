@@ -1,0 +1,84 @@
+<div class= "courseList" style = "margin:15px;">
+	<ol class="breadcrumb" style = "border:1px solid #ccc;background:#fff;">
+		<li><a href="#">课程管理</a></li>
+		<li class="active">创建课程</li>
+	</ol>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="page-header">
+				<form class = "form-inline">
+					<select class="form-control">
+						<option>按讲师</option>
+					</select>
+					<select class="form-control">
+						<option>按类别</option>
+					</select>
+					<select class="form-control">
+						<option>按课时</option>
+					</select>
+					<button class = "btn btn-info">筛选</button>
+					<div class="input-group pull-right">
+					    <input type="text" class="form-control input-md">
+					    <span class="input-group-btn">
+					        <button class="btn btn-info btn-md">搜索</button>
+					    </span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="panel-body">
+		    
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src = "./lib/jqueryCookie/jquery.session.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr = [];
+		var i,len;
+		var panel_body = $(".panel-body");
+		$.ajax({
+			type:"post",
+			data:{cookie:cookie},
+			url:"./phpData/courseList.php",
+			success:function(data){
+				data = JSON.parse(data);
+				// console.log(data.result[0].cs_id);
+				for(i=0,len=data.result.length;i<len;i++){
+					arr.unshift(//最新添加的课程排在前面
+					    '<div class="media">'+
+							'<div class="media-left pull-left">'+
+								'<a href="javascript:;">'+
+									'<img class="media-object" src="'+data.result[i].cs_cover+'" alt="...">'+
+								'</a>'+
+							'</div>'+
+							'<div class="media-body full-left">'+
+								'<h4 class="media-heading"><a href = "#courseAdd/Detail/info" data-cs_id = "'+data.result[i].cs_id+'" class = "courseTitle">'+data.result[i].cs_name+'</a></h4>'+
+								'<ul>'+
+									'<li>'+
+										'<span>讲师：'+data.result[i].tc_name+'</span>'+
+										'<span>类别：'+data.result[i].cg_name+'</span>'+
+									'</li>'+
+									'<li>'+
+										'<span>课时：8天</span>'+
+										'<span>学员：39</span>'+
+									'</li>'+
+									'<li>'+
+										'<span>浏览：5468</span>'+
+									'</li>'+
+								'</ul>'+
+							'</div>'+
+						'</div>'
+					);
+				}
+				panel_body.html(arr);
+				$(".courseTitle").on("click",function(){
+					$.session.set("cs_id",$(this).data("cs_id"));
+					$("#content").load("courseManagement/courseAddDetail/courseAddDetail.html",function(){
+						$(".panel-right").load("courseManagement/courseAddDetail/courseAddDetailInfo.html");
+					});
+				});
+			}
+		});
+	});
+</script>

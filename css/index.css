@@ -1,8 +1,9 @@
 #wrap {
   display: flex;
+  mix-width: 980px;
 }
 #wrap aside {
-  width: 180px;
+  width: 180px!important;
   background: #2F4050;
 }
 #wrap aside > .user_avatar {
@@ -45,7 +46,6 @@
 }
 #wrap main {
   flex: 1;
-  height: 500px;
   background: #F4F6F8;
 }
 #wrap main > header .navbar {
@@ -103,48 +103,144 @@
   font-weight: 500;
   font-family: "Microsoft Yahei";
 }
-#wrap main #content .lecturerManagement,
+#wrap main #content > .lecturerManagement,
 #wrap main #content .sortManagement,
-#wrap main #content .courseAdd {
+#wrap main #content .courseAdd,
+#wrap main #content .courseList {
   padding: 0 20px;
 }
-#wrap main #content .lecturerManagement .breadcrumb,
+#wrap main #content > .lecturerManagement .breadcrumb,
 #wrap main #content .sortManagement .breadcrumb,
-#wrap main #content .courseAdd .breadcrumb {
+#wrap main #content .courseAdd .breadcrumb,
+#wrap main #content .courseList .breadcrumb {
   background: #fff;
   border: 1px solid #ccc;
   position: relative;
 }
-#wrap main #content .lecturerManagement .breadcrumb button,
-#wrap main #content .sortManagement .breadcrumb button,
-#wrap main #content .courseAdd .breadcrumb button {
+#wrap main #content > .lecturerManagement .breadcrumb .lecturerAdd,
+#wrap main #content .sortManagement .breadcrumb .lecturerAdd,
+#wrap main #content .courseAdd .breadcrumb .lecturerAdd,
+#wrap main #content .courseList .breadcrumb .lecturerAdd,
+#wrap main #content > .lecturerManagement .breadcrumb .sortAdd,
+#wrap main #content .sortManagement .breadcrumb .sortAdd,
+#wrap main #content .courseAdd .breadcrumb .sortAdd,
+#wrap main #content .courseList .breadcrumb .sortAdd {
   position: absolute;
   top: 0;
   right: 0;
   height: 36px;
 }
-#wrap main #content .lecturerManagement .panel .panel-heading,
-#wrap main #content .sortManagement .panel .panel-heading,
-#wrap main #content .courseAdd .panel .panel-heading {
+#wrap main #content > .lecturerManagement > .panel > .panel-heading,
+#wrap main #content .sortManagement > .panel > .panel-heading,
+#wrap main #content .courseAdd > .panel > .panel-heading,
+#wrap main #content .courseList > .panel > .panel-heading {
   padding: 15px;
   background: #fff;
 }
-#wrap main #content .lecturerManagement .panel .panel-heading .page-header,
-#wrap main #content .sortManagement .panel .panel-heading .page-header,
-#wrap main #content .courseAdd .panel .panel-heading .page-header {
+#wrap main #content > .lecturerManagement > .panel > .panel-heading .page-header,
+#wrap main #content .sortManagement > .panel > .panel-heading .page-header,
+#wrap main #content .courseAdd > .panel > .panel-heading .page-header,
+#wrap main #content .courseList > .panel > .panel-heading .page-header {
   margin: 0;
 }
-#wrap main #content .lecturerManagement table,
+#wrap main #content > .lecturerManagement > .panel > .panel-heading > .container-fulid,
+#wrap main #content .sortManagement > .panel > .panel-heading > .container-fulid,
+#wrap main #content .courseAdd > .panel > .panel-heading > .container-fulid,
+#wrap main #content .courseList > .panel > .panel-heading > .container-fulid {
+  margin-top: 30px;
+}
+#wrap main #content > .lecturerManagement > .panel > .panel-heading > .container-fulid > .row > .form-horizontal,
+#wrap main #content .sortManagement > .panel > .panel-heading > .container-fulid > .row > .form-horizontal,
+#wrap main #content .courseAdd > .panel > .panel-heading > .container-fulid > .row > .form-horizontal,
+#wrap main #content .courseList > .panel > .panel-heading > .container-fulid > .row > .form-horizontal {
+  padding: 15px;
+}
+#wrap main #content > .lecturerManagement > .panel > .panel-heading > .container-fulid > .row > .form-horizontal button,
+#wrap main #content .sortManagement > .panel > .panel-heading > .container-fulid > .row > .form-horizontal button,
+#wrap main #content .courseAdd > .panel > .panel-heading > .container-fulid > .row > .form-horizontal button,
+#wrap main #content .courseList > .panel > .panel-heading > .container-fulid > .row > .form-horizontal button {
+  height: 34px;
+}
+#wrap main #content > .lecturerManagement > .panel > .panel-heading > .container-fulid > .row .line,
+#wrap main #content .sortManagement > .panel > .panel-heading > .container-fulid > .row .line,
+#wrap main #content .courseAdd > .panel > .panel-heading > .container-fulid > .row .line,
+#wrap main #content .courseList > .panel > .panel-heading > .container-fulid > .row .line {
+  width: 1px;
+  height: 300px;
+  background: #ccc;
+}
+#wrap main #content > .lecturerManagement > .panel > .panel-heading > .container-fulid > .row .page-header,
+#wrap main #content .sortManagement > .panel > .panel-heading > .container-fulid > .row .page-header,
+#wrap main #content .courseAdd > .panel > .panel-heading > .container-fulid > .row .page-header,
+#wrap main #content .courseList > .panel > .panel-heading > .container-fulid > .row .page-header {
+  border: none;
+}
+#wrap main #content > .lecturerManagement > .panel > .panel-heading > .container-fulid > .row .page-header h4 small,
+#wrap main #content .sortManagement > .panel > .panel-heading > .container-fulid > .row .page-header h4 small,
+#wrap main #content .courseAdd > .panel > .panel-heading > .container-fulid > .row .page-header h4 small,
+#wrap main #content .courseList > .panel > .panel-heading > .container-fulid > .row .page-header h4 small {
+  line-height: 40px;
+}
+#wrap main #content > .lecturerManagement table,
 #wrap main #content .sortManagement table,
-#wrap main #content .courseAdd table {
+#wrap main #content .courseAdd table,
+#wrap main #content .courseList table {
   border-left: none;
   border-right: none;
 }
-#wrap main #content .lecturerManagement table tr th,
+#wrap main #content > .lecturerManagement table tr th,
 #wrap main #content .sortManagement table tr th,
 #wrap main #content .courseAdd table tr th,
-#wrap main #content .lecturerManagement table tr td,
+#wrap main #content .courseList table tr th,
+#wrap main #content > .lecturerManagement table tr td,
 #wrap main #content .sortManagement table tr td,
-#wrap main #content .courseAdd table tr td {
+#wrap main #content .courseAdd table tr td,
+#wrap main #content .courseList table tr td {
   text-align: center;
+}
+#wrap main #content > .courseList > .panel > .panel-body {
+  padding-top: 0;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media {
+  padding: 20px 0;
+  margin-top: 0;
+  border-bottom: 1px dashed #888;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media:hover {
+  background: #FCFCFC;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media > .media-left {
+  width: 240px;
+  height: 120px;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media > .media-left img {
+  width: 100%;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media > .media-body {
+  padding-left: 30px;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media > .media-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 30px;
+  color: #888;
+}
+#wrap main #content > .courseList > .panel > .panel-body > .media > .media-body ul span {
+  margin-right: 30px;
+}
+#mask {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+#mask img {
+  width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

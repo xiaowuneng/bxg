@@ -1,0 +1,51 @@
+<div class= "courseAddDetail" style = "margin:15px;">
+	<ol class="breadcrumb" style = "border:1px solid #ccc;background:#fff;">
+		<li><a href="#">课程管理</a></li>
+		<li class="active">基本信息</li>
+	</ol>
+	<div class="panel panel-default panel-top">
+		<div class="panel-heading" style = "padding:0">
+			<!-- <img src="./images/course.png"> -->
+			<div class = "info" style= "padding:15px;">
+				<dl>
+					<dt style = "font-size:16px;color:#666;"></dt>
+					<dd style = "font-size:14px;color:#999;margin-top:15px;"></dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class = "panel-con">
+		<div class="list-group">
+		  <a href="#courseAdd/Detail/info" class="list-group-item courseAddDetailInfo active">
+		    基本信息
+		  </a>
+		  <a href="#courseAdd/Detail/img" class="list-group-item courseAddDetailImg">课程图片</a>
+		  <a href="#courseAdd/Detail/manage" class="list-group-item courseAddDetailManage ">课时管理</a>
+		</div>
+		<div class="panel panel-default panel-right"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src = "./lib/jqueryCookie/jquery.session.js"></script>
+<script type="text/javascript">
+	if(window.location.hash === "#courseAdd/Detail/info"){//页面初加载时，加载基本信息页面
+		// $("#content").load("courseManagement/courseAddDetail/courseAddDetail.html");
+		$(".panel-right").load("./courseManagement/courseAddDetail/courseAddDetailInfo.html");
+	}
+	$("head").append($('<link rel="stylesheet" type="text/css" href="./css/courseAddDetail.css">'));//加载css
+	$(function(){
+		var courseAddDetailInfo = $(".courseAddDetailInfo");
+		var courseAddDetailImg = $(".courseAddDetailImg");
+		var courseAddDetailManage = $(".courseAddDetailManage");
+
+		courseAddDetailInfo.on("click",function(){//点击时 加载对应页面
+			$(".panel-right").load("./courseManagement/courseAddDetail/courseAddDetailInfo.html");
+		});
+		courseAddDetailImg.on("click",function(){
+			$(".panel-right").load("./courseManagement/courseAddDetail/courseAddDetailImg.html");
+		});
+		courseAddDetailManage.on("click",function(){
+			$(".panel-right").load("./courseManagement/courseAddDetail/courseAddDetailManage.html");
+		});
+	});
+</script>

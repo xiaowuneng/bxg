@@ -3,7 +3,7 @@
 		<li><a href="#">讲师管理</a></li>
 		<li class="active">讲师列表</li>
 		<li>
-			<button class = "btn btn-info btn-md " >添加讲师</button>
+			<a href = "#lecturerAdd" class = "btn btn-info btn-md lecturerAdd" >添加讲师</a>
 		</li>
 	</ol>
 	<div class="panel panel-default">
@@ -17,7 +17,7 @@
                 </div>
             </form>
 		</div>
-		<table class="table table-striped table-bordered">
+		<table class="table table-striped table-bordered lecturer_list">
 		 	<tbody>
 		 		<tr>
 		 			<th>编号</th>
@@ -30,100 +30,160 @@
 		 			<th>入职日期</th>
 		 			<th>操作</th>
 		 		</tr>
-		 		<tr>
-		 			<td>1</td>
-		 			<td>jh</td>
-		 			<td>前端</td>
-		 			<td>女</td>
-		 			<td></td>
-		 			<td>1990-1-1</td>
-		 			<td>123@qq.com</td>
-		 			<td>2010-1-1</td>
-		 			<td>
-		 				<button class = "btn btn-info btn-xs">查看</button>
-		 				<button class = "btn btn-info btn-xs">编辑</button>
-		 				<button class = "btn btn-info btn-xs">启用</button>
-		 			</td>
-		 		</tr>
-		 		<tr>
-		 			<td>1</td>
-		 			<td>jh</td>
-		 			<td>前端</td>
-		 			<td>女</td>
-		 			<td></td>
-		 			<td>1990-1-1</td>
-		 			<td>123@qq.com</td>
-		 			<td>2010-1-1</td>
-		 			<td>
-		 				<button class = "btn btn-info btn-xs">查看</button>
-		 				<button class = "btn btn-info btn-xs">编辑</button>
-		 				<button class = "btn btn-info btn-xs">启用</button>
-		 			</td>
-		 		</tr>
-		 		<tr>
-		 			<td>1</td>
-		 			<td>jh</td>
-		 			<td>前端</td>
-		 			<td>女</td>
-		 			<td></td>
-		 			<td>1990-1-1</td>
-		 			<td>123@qq.com</td>
-		 			<td>2010-1-1</td>
-		 			<td>
-		 				<button class = "btn btn-info btn-xs">查看</button>
-		 				<button class = "btn btn-info btn-xs">编辑</button>
-		 				<button class = "btn btn-info btn-xs">启用</button>
-		 			</td>
-		 		</tr>
-		 		<tr>
-		 			<td>1</td>
-		 			<td>jh</td>
-		 			<td>前端</td>
-		 			<td>女</td>
-		 			<td></td>
-		 			<td>1990-1-1</td>
-		 			<td>123@qq.com</td>
-		 			<td>2010-1-1</td>
-		 			<td>
-		 				<button class = "btn btn-info btn-xs">查看</button>
-		 				<button class = "btn btn-info btn-xs">编辑</button>
-		 				<button class = "btn btn-info btn-xs">启用</button>
-		 			</td>
-		 		</tr>
-		 		<tr>
-		 			<td>1</td>
-		 			<td>jh</td>
-		 			<td>前端</td>
-		 			<td>女</td>
-		 			<td></td>
-		 			<td>1990-1-1</td>
-		 			<td>123@qq.com</td>
-		 			<td>2010-1-1</td>
-		 			<td>
-		 				<button class = "btn btn-info btn-xs">查看</button>
-		 				<button class = "btn btn-info btn-xs">编辑</button>
-		 				<button class = "btn btn-info btn-xs">启用</button>
-		 			</td>
-		 		</tr>
-		 		<tr>
-		 			<td>1</td>
-		 			<td>jh</td>
-		 			<td>前端</td>
-		 			<td>女</td>
-		 			<td></td>
-		 			<td>1990-1-1</td>
-		 			<td>123@qq.com</td>
-		 			<td>2010-1-1</td>
-		 			<td>
-		 				<button class = "btn btn-info btn-xs">查看</button>
-		 				<button class = "btn btn-info btn-xs">编辑</button>
-		 				<button class = "btn btn-info btn-xs">启用</button>
-		 			</td>
-		 		</tr>
+		 		
 		 	</tbody>
 		</table>
-		<div class="panel-body">
-			
-		</div>
 	</div>
 </div>
+
+<!-- 点击查看弹出模态框 -->
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document" style="width:750px;">
+    <div class="modal-content">
+      	<div class="modal-header">
+          	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          	<h4 class="modal-title" id="gridSystemModalLabel">讲师信息</h4>
+        </div>
+        <div class="modal-body">
+        	<table class = "table table-bordered container-fulid">
+        		<tr class = "row">
+        			<th class = "col-sm-2">姓名：</th>
+        			<td class = "info_name col-sm-2"></td>
+        			<th class = "col-sm-2">职位：</th>
+        			<td class = "col-sm-4">讲师</td>
+        			<td class = "col-sm-2" rowspan = "4" ">
+        				<img class = "info_image" src="" style = "width:100%;">
+        			</td>
+        		</tr>
+        		<tr class = "row">
+        			<th class = "col-sm-2">花名：</th>
+        			<td class = "info_name2 col-sm-2"></td>
+        			<th class = "col-sm-2">出生日期：</th>
+        			<td class = "info_birthday col-sm-4"></td>
+        		</tr>
+        		<tr class = "row">
+        			<th class = "col-sm-2">性别：</th>
+        			<td class = "info_sex col-sm-2"></td>
+        			<th class = "col-sm-2">入职日期：</th>
+        			<td class = "info_in col-sm-4"></td>
+        		</tr>
+        		<tr class = "row">
+        			<th class = "col-sm-2">手机号码：</th>
+        			<td class = "info_phoneNub col-sm-2"></td>
+        			<th class = "col-sm-2">邮箱：</th>
+        			<td class = "info_email col-sm-4"></td>
+        		</tr>
+        		<tr class = "row">
+        			<th class = "col-sm-2">籍贯：</th>
+        			<td class = "info_hometown col-sm-10" colspan = "5">123</td>
+        		</tr>
+        		<tr class = "row">
+        			<td class = "col-sm-12 info_introduce" colspan = "6" style = "height:200px;"></td>
+        		</tr>
+        	</table>
+        </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src = "./lib/jqueryCookie/jquery.session.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var lectureAdd = $(".lecturerAdd");
+		var arr = [];
+		var i,
+			len;
+		// var cookie = "PHPSESSID="+$.cookie("PHPSESSID");
+		lectureAdd.on("click",function(){
+			$("#content").load("lecturer/lecturerAdd.html");
+		});
+
+		$.ajax({
+			type:"get",
+			datatype:"json",
+			url:"./phpData/lecturer.php",
+			data:{"cookie":cookie},
+			success:function(data){
+				data = JSON.parse(data);//字符串格式转为对象
+				for(i=0,len=data.result.length;i<len;i++){
+					if(data.result[i].tc_gender == 1){
+						data.result[i].tc_gender = "女";
+					}else{
+						data.result[i].tc_gender = "男";
+					}
+					arr.push(
+						'<tr>'+
+							'<td>'+data.result[i].tc_id+'</td>'+
+							'<td>'+data.result[i].tc_name+'</td>'+
+							'<td>'+data.result[i].tc_roster+'</td>'+
+							'<td>'+data.result[i].tc_gender+'</td>'+
+							'<td>'+data.result[i].tc_cellphone+'</td>'+
+							'<td>'+data.result[i].tc_birthday+'</td>'+
+							'<td>'+data.result[i].tc_email+'</td>'+
+							'<td>'+data.result[i].tc_join_date+'</td>'+
+							'<td>'+
+								'<button class = "btn btn-info btn-xs view" data-toggle="modal" data-target=".bs-example-modal-lg">查看</button>'+
+								'<a href = "#lecturer/edit" class = "btn btn-info btn-xs lecturerEdit" style = "margin:0 15px;">编辑</a>'+
+								'<button class = "btn btn-warning btn-xs">注销</button>'+
+							'</td>'+
+						'</tr>'
+					);	
+				}
+				$(".lecturer_list>tbody").append(arr.join(""));
+				NProgress.done();
+
+				var info_name = $(".info_name");
+				var info_image = $(".info_image");
+				var info_name2 = $(".info_name2");
+				var info_birthday = $(".info_birthday");
+				var info_sex = $(".info_sex");
+				var info_in = $(".info_in");
+				var info_phoneNum = $(".info_phoneNub");
+				var info_email = $(".info_email");
+				var info_hometown = $(".info_hometown");
+				var info_introduce = $(".info_introduce");
+
+
+				// 点击查看按钮获取数据
+				$(".view").on("click",function(){
+					//获取id，作为请求的参数
+					var tc_id = $(this).parent().siblings("td").first().html();
+					
+					$.ajax({
+						url:"./phpData/lecturerDetail.php",
+						data:{"tc_id":tc_id,"cookie":cookie},
+						success:function(data){
+							data = JSON.parse(data);
+							if(data.result.tc_gender == 1){
+								data.result.tc_gender = "女";
+							}else{
+								data.result.tc_gender = "男";
+							}
+							info_name.html(data.result.tc_name);
+							if(data.result.tc_avatar){//图片不为空时，否则替换否则默认图片
+								info_image.attr("src",data.result.tc_avatar);
+							}else{
+								info_image.attr("src","./images/default.png");
+							}
+							info_name2.html(data.result.tc_roster);
+							info_birthday.html(data.result.tc_birthday);
+							info_sex.html(data.result.tc_gender);
+							info_in.html(data.result.tc_join_date);
+							info_phoneNum.html(data.result.tc_cellphone);
+							info_email.html(data.result.tc_email);
+							info_hometown.html(data.result.tc_hometown);
+							info_introduce.html(data.result.tc_introduce);
+						}
+					});	
+				});
+
+				//点击编辑按钮获取数据
+				$(".lecturerEdit").on("click",function(){
+					// 获取id，用于编辑页面(lecturerEdit.html)获取数据
+					$.session.set("tc_id",$(this).parent().siblings("td").first().html());
+					$("#content").load("lecturer/lecturerEdit.html");
+				});
+			}
+		});
+	});
+</script>

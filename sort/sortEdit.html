@@ -1,0 +1,125 @@
+<div class= "sortAdd" style = "margin:15px;">
+	<ol class="breadcrumb" style = "border:1px solid #ccc;background:#fff;">
+		<li><a href="#">课程管理</a></li>
+		<li class="active">编辑分类</li>
+	</ol>
+	<div class="panel panel-default" style = "padding-top:15px;">
+		<div class="panel-body">
+			<div class = "container-fulid">
+				<form class="form-horizontal col-sm-offset-3">
+					<div class="form-group">
+						<label for="userName" class="col-sm-2 control-label">名称</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="sortName"  name = "cg_name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="leixing" class="col-sm-2 control-label">级别</label>
+						<select class="form-control col-sm-3" id = "leixing" style = "width:20%;margin-left:15px" name = "cg_pid">
+							<option value = "0">顶级分类</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="paixu" class="col-sm-2 control-label">排序</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="paixu" name = "cg_order">
+						</div>
+					</div>
+					<div class = "form-group">
+						<label for="sex" class="col-sm-2 control-label" style = "margin-right:15px;">是否显示</label>
+						<div class = "radio" id = "sex" >
+							<label>
+							    <input type="radio" name="cg_is_hide" id="show" value="0" >
+							    是
+							</label>
+							<label>
+							    <input type="radio" name="cg_is_hide" id="hide" value="1">
+							    否
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default btn-info save">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src = "./lib/jqueryCookie/jquery.session.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr = [];
+		var i,len;
+		var save = $(".save");
+		var cg_id = $.session.get("cg_id");
+		var sortName = $("#sortName");
+		var leixing = $("#leixing");
+		var paixu = $("#paixu");
+		var show = $("#show");
+		var hide = $("#hide");
+		var param;
+		/*$.ajax({
+			type:"post",
+			data:{cookie:cookie},
+			url:"./phpData/sortToplevel.php",
+			success:function(data){
+				data = JSON.parse(data);
+				for(i=0,len = data.result.length;i<len;i++){
+					arr.push(
+						'<option value = "'+data.result[i].cg_id+'">'+data.result[i].cg_name+'</option>'
+					);
+				}
+				$("#leixing").append(arr.join(""));
+			}
+		});*/
+
+		// 编辑时，先获取内容
+		$.ajax({
+			type:"post",
+			data:{cg_id:cg_id,cookie:cookie},
+			url:"./phpData/sortEdit.php",
+			success:function(data){
+				data = JSON.parse(data);
+				sortName.val(data.result.cg_name);
+				for(i=0,len = data.result.top.length;i<len;i++){//设置类型
+					arr.push(
+						'<option value = "'+data.result.top[i].cg_id+'">'+data.result.top[i].cg_name+'</option>'
+					);
+				}
+				leixing.append(arr.join(""));
+				var options = leixing.children("option");//不要移动位置
+				for(i = 0,len = options.length;i<len;i++){//option[i]为js对象，用js方法
+					if(options[i].getAttribute("value") == data.result.cg_pid){
+						options[i].setAttribute("selected","ture");//让二级分类对应的一级分类默认选中
+					}
+				}
+				paixu.val(data.result.cg_order);
+				if(data.result.cg_is_hide == 0){
+					show.prop("checked","true");
+				}else{
+					hide.prop("checked","true");
+				}
+			}
+		});
+
+		//编辑好，保存
+		save.on("click",function(){
+			param = "cg_id="+cg_id+"&"+$("form").serialize();
+			$.ajax({
+				type:"post",
+				data:{cookie:cookie,param:param},
+				url:"./phpData/sortEditOver.php",
+				success:function(data){
+					data = JSON.parse(data);
+					if(data.code == 200){
+						alert("修改成功！");
+					}
+				}
+			});
+			return false;
+		});
+	});
+</script>

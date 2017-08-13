@@ -1,0 +1,54 @@
+.courseAddDetail .panel-top .panel-heading {
+  height: 120px;
+  background: url(../images/course.png) no-repeat;
+  background-size: auto 100%;
+}
+.courseAddDetail .panel-top .panel-heading .info {
+  height: 120px;
+  margin-left: 240px;
+  padding: 15px;
+}
+.courseAddDetail .panel-con {
+  display: flex;
+}
+.courseAddDetail .panel-con .list-group {
+  margin-right: 20px;
+  width: 240px;
+}
+.courseAddDetail .panel-con .list-group .list-group-item {
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+.courseAddDetail .panel-con .panel-right {
+  flex: 1;
+}
+.courseAddDetail .panel-con .panel-right .panel-heading {
+  padding: 20px;
+  background: #fff;
+}
+.panel-body {
+  min-height: 300px;
+}
+.panel-body .list-unstyled {
+  padding: 20px;
+}
+.panel-body .list-unstyled li {
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  box-sizing: content-box;
+  margin-bottom: 10px;
+}
+.panel-body .list-unstyled li i {
+  color: #337AB7;
+  margin-right: 5px;
+}
+.panel-body .list-unstyled li .duration {
+  margin-left: 10px;
+  color: #999;
+}
+.panel-body .list-unstyled li .preview {
+  margin: 0 10px;
+}
